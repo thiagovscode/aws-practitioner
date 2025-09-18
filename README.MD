@@ -3,7 +3,7 @@
 
 
 
-## 1. Vantagens da Computação em Nuvem
+## Vantagens da Computação em Nuvem
 
 - Trocar despesa de capital (CAPEX) por despesa operacional (OPEX): pagar conforme demanda; não possuir hardware físico.
 - Beneficiar-se de economias de escala massivas, resultando em preços reduzidos.
@@ -14,7 +14,7 @@
 
 ---
 
-## 2. Três Fundamentos da Precificação AWS
+## Três Fundamentos da Precificação AWS
 
 - **Compute (Computação):** custo pelo uso de recursos computacionais (ex: EC2, Lambda, containers).
 - **Storage (Armazenamento):** custo pelo espaço utilizado para guardar dados (ex: S3, EBS).
@@ -22,7 +22,7 @@
 
 ---
 
-## 3. Pontos para Escolha de Região AWS
+## Pontos para Escolha de Região AWS
 
 - **Conformidade (compliance):** atender às leis e regulamentos locais, como a LGPD no Brasil.
 - **Latência:** escolher uma região próxima dos usuários para reduzir atrasos e melhorar a experiência.
@@ -30,14 +30,14 @@
 
 ---
 
-## 4. Serviços com Escopo Global e Regionais
+## Serviços com Escopo Global e Regionais
 
 - **Globais:** Route 53 (DNS), IAM (gerenciamento de identidade e acesso), CloudFront (CDN), AWS WAF (firewall).
 - **Regionais:** EC2 (máquinas virtuais), S3 (armazenamento), RDS (banco de dados relacional).
 
 ---
 
-## 5. Infraestrutura da AWS
+## Infraestrutura da AWS
 
 - **Regiões:** agrupamentos geográficos com múltiplas Zonas de Disponibilidade (AZs).
 - **Zonas de Disponibilidade (AZs):** data centers independentes com energia, rede e refrigeração próprios. Cada região tem pelo menos 2 AZs para garantir resiliência.
@@ -45,7 +45,7 @@
 
 ---
 
-## 6. Modelo de Responsabilidade Compartilhada AWS
+## Modelo de Responsabilidade Compartilhada AWS
 
 - **AWS:** responsável pela segurança da nuvem — infraestrutura física, hardware, software, rede, data centers.
 - **Cliente:** responsável pela segurança na nuvem — dados, identidade, aplicações, sistemas, redes e firewalls.
@@ -53,13 +53,13 @@
 
 ---
 
-## 7. Modelo Pay As You Go
+## Modelo Pay As You Go
 
 - Paga-se apenas pelo uso efetivo dos recursos, sem necessidade de investimento antecipado ou contratos fixos.
 
 ---
 
-## 8. Modelos de Cloud Computing
+## Modelos de Cloud Computing
 
 - **On-premises:** infraestrutura própria no local da empresa.
 - **IaaS (Infrastructure as a Service):** aluguel de recursos virtuais (ex: EC2, S3).
@@ -68,7 +68,7 @@
 
 ---
 
-## 9. Diferença entre Tolerância a Falhas e Recuperação de Desastres
+## Diferença entre Tolerância a Falhas e Recuperação de Desastres
 
 - **Tolerância a falhas:** manter o sistema funcionando mesmo quando partes falham, com redundância ativa.
 - **Recuperação de desastres:** restaurar serviços após falhas severas, com possível downtime.
@@ -77,7 +77,7 @@
 
 ---
 
-## 10. Política de Uso Aceitável da AWS (Acceptable Use Policy - AUP)
+## Política de Uso Aceitável da AWS (Acceptable Use Policy - AUP)
 
 - Define o que não é permitido na plataforma AWS. 
 - Proíbe uso ilegal, ofensivo ou prejudicial.
@@ -86,7 +86,7 @@
 
 ---
 
-## 11. Serviços AWS e Seus Modelos de Nuvem
+## Serviços AWS e Seus Modelos de Nuvem
 
 ``` 
 AWS Serviços
@@ -116,17 +116,17 @@ AWS Serviços
 └─ Desktop virtual na nuvem para usuários
 ```
 
-## 12. IAM: Usuários e Grupos
+## IAM: Usuários e Grupos
 - **IAM** = Gerenciamento de Identidade e Acesso, serviço global
 - A conta **root** é criada por padrão e não deve ser usada ou compartilhada
 - **Usuários** são pessoas dentro da sua organização e podem ser agrupadas
 - **Grupos** contêm apenas usuários, não podem conter outros grupos
 - **Usuários** não precisam pertencer a um grupo, e um usuário pode pertencer a vários grupos.
 
-### 13. IAM: Permissões
+### IAM: Permissões
 Na AWS, usuários e grupos podem receber políticas, que são documentos no formato JSON usados para definir exatamente o que cada usuário ou grupo pode ou não fazer dentro do ambiente. Essas políticas controlam as permissões de acesso aos recursos da nuvem. Para manter a segurança e a boa prática de governança, a AWS adota o princípio do menor privilégio, que recomenda conceder apenas as permissões estritamente necessárias para que o usuário execute suas funções, evitando riscos e acessos indevidos.
 
-## 14. Estrutura de Políticas IAM (AWS)
+## Estrutura de Políticas IAM (AWS)
 
 Uma política IAM (Identity and Access Management) é composta por:
 
@@ -134,7 +134,7 @@ Uma política IAM (Identity and Access Management) é composta por:
 - **Id:** Identificador opcional da política
 - **Statement:** Uma ou mais declarações que definem permissões (obrigatório)
 
-#### 14.1 Estrutura de uma declaração (Statement)
+#### Estrutura de uma declaração (Statement)
 
 Cada `Statement` pode conter os seguintes elementos:
 
@@ -148,7 +148,7 @@ Cada `Statement` pode conter os seguintes elementos:
 > Exemplo de uso: você pode criar uma política que permite a um usuário listar objetos em um bucket S3 específico, apenas se ele estiver usando autenticação MFA.
 
 
-## 15. IAM – Política de Senhas
+## IAM – Política de Senhas
 
 - Senhas fortes = maior segurança para sua conta
 - Na AWS, você pode configurar uma política de senhas:
@@ -162,24 +162,34 @@ Cada `Statement` pode conter os seguintes elementos:
   - Exigir que os usuários alterem suas senhas após um determinado tempo (expiração de senha)
   - Impedir o reuso de senhas
 
-## 16 Autenticação Multifator – MFA
+## Autenticação Multifator – MFA
 
 - Os usuários têm acesso à sua conta e podem, possivelmente, alterar configurações ou excluir recursos na sua conta AWS.
 - Você quer proteger sua **conta Root e usuários IAM**
 - MFA = senha que **você sabe** + dispositivo de segurança que **você possui**
 
-### 16.1 Exemplo de fluxo de login com MFA:
+### Exemplo de fluxo de login com MFA:
 [Usuário: Alice] + [Senha] + [MFA] => [Login bem-sucedido]
 
 - **Principal benefício do MFA**:  
   Se uma senha for roubada ou invadida, **a conta não será comprometida**
 
-## 17. Como os usuários acessam a AWS?
+## Como os usuários acessam a AWS?
 
 - Para acessar a AWS, você tem três opções:
   - **AWS Management Console** (protegido por senha + MFA)
   - **AWS Command Line Interface (CLI)**: protegido por chaves de acesso
   - **AWS Software Developer Kit (SDK)**: para código, protegido por chaves de acesso
+
+
+
+
+| **Forma de Acesso**      | **Proteção Padrão**                                | **Uso Típico**                           | **Riscos Principais**                                                                 | **Boas Práticas**                                                                 |
+|---------------------------|----------------------------------------------------|-------------------------------------------|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| **AWS Management Console** | Senha + MFA (para usuários humanos)               | Acesso via navegador web (interface gráfica) | Phishing de credenciais; senhas fracas; sem MFA a conta fica vulnerável                 | Exigir MFA sempre, aplicar senhas fortes, usar SSO/Federation quando possível       |
+| **AWS CLI**               | Access Key ID + Secret Access Key (arquivos locais) | Automação, scripts, administração via terminal | Chaves podem vazar em logs, repositórios ou máquinas comprometidas; sem MFA direto     | Usar **STS (credenciais temporárias)**, rotacionar chaves, nunca hardcodear, usar `aws-vault` |
+| **AWS SDK**               | Access Key ID + Secret Access Key (ou IAM Role)    | Integração em código (ex.: boto3, Java SDK) | Chaves hardcoded no código ou expostas em repositórios                                 | Usar **IAM Roles** em vez de chaves fixas, credenciais temporárias, nunca expor chaves em código |
+
 
 - As chaves de acesso são geradas através do Console da AWS
 - Os próprios usuários gerenciam suas chaves de acesso
@@ -219,3 +229,456 @@ Cada `Statement` pode conter os seguintes elementos:
 | **IaaS (Infrastructure as a Service)** | Infraestrutura básica: servidores virtuais, armazenamento, redes e segurança. O cliente controla o sistema operacional, middleware e aplicações. | - **Amazon EC2** (servidores virtuais)  <br> - **Amazon S3** (armazenamento de objetos) <br> - **Amazon EBS** (volumes de armazenamento em bloco) <br> - **Amazon VPC** (rede virtual privada)                                                           | Quando a empresa quer **controle total da infraestrutura** e flexibilidade para configurar sistemas conforme a necessidade. Ideal para migrar sistemas legados. |
 | **PaaS (Platform as a Service)**       | Plataforma para desenvolver, testar e implantar aplicações sem gerenciar servidores diretamente.                                                 | - **AWS Elastic Beanstalk** (deploy de apps sem gerenciar servidores) <br> - **AWS Lambda** (serverless functions) <br> - **Amazon RDS** (banco de dados gerenciado) <br> - **AWS Elastic Kubernetes Service (EKS)** e **ECS** (containers orquestrados) | Quando o foco é **desenvolver e escalar aplicações** rapidamente, sem se preocupar com a manutenção da infraestrutura.                                          |
 | **SaaS (Software as a Service)**       | Aplicativos prontos, fornecidos como serviço, acessados via navegador ou API.                                                                    | - **Amazon Chime** (videoconferência e colaboração) <br> - **Amazon WorkMail** (e-mail corporativo) <br> - **Amazon WorkDocs** (armazenamento e colaboração de documentos)                                                                               | Quando a empresa quer **usar software pronto** sem precisar se preocupar com instalação, atualização ou gerenciamento de servidores.                            |
+
+
+
+## AWS Wavelength
+O **AWS Wavelength** incorpora serviços de computação e armazenamento da AWS em redes **5G**, fornecendo infraestrutura de **computação de borda móvel** para desenvolvimento, implantação e escalabilidade de aplicações de **latência ultrabaixa**.
+
+---
+
+## AWS Outposts
+O **AWS Outposts** é uma família de soluções totalmente gerenciadas que fornecem infraestrutura e serviços da AWS para praticamente qualquer local da borda ou **on-premises**, proporcionando uma experiência híbrida verdadeiramente consistente.
+
+
+# Modelo de Responsabilidade Compartilhada (AWS)
+
+## Cliente (Responsabilidade pela segurança **IN** the Cloud)
+- **Customer Data**
+- **Platform, Applications, Identity & Access Management**
+- **Operating System, Network & Firewall Configuration**
+- **Client-side Data Encryption & Data Integrity Authentication**
+- **Server-side Encryption (File System and/or Data)**
+- **Networking Traffic Protection** (Encryption, Integrity, Identity)
+
+---
+
+## AWS (Responsabilidade pela segurança **OF** the Cloud)
+### Software
+- **Compute**
+- **Storage**
+- **Database**
+- **Networking**
+
+### Hardware / Infraestrutura Global
+- **Regions**
+- **Availability Zones**
+- **Edge Locations**
+
+
+# Amazon EC2 – Elastic Compute Cloud
+
+Serviço conhecido como **Máquinas Virtuais** na AWS.  
+Permite criar e gerenciar servidores virtuais (instâncias) na nuvem.  
+Oferece flexibilidade para escolher o tipo de instância conforme a necessidade do projeto.
+
+
+## Escalabilidade no EC2
+
+### Tipos de Escalabilidade
+
+- **Escalabilidade Horizontal (Scale Out / Scale In)**
+  - Adição ou remoção de múltiplas instâncias EC2.
+  - Permite lidar com variação de carga distribuindo em mais servidores.
+  - Ex.: Auto Scaling Group + Elastic Load Balancer (ELB).
+
+- **Escalabilidade Vertical (Scale Up / Scale Down)**
+  - Aumento ou diminuição da capacidade **de uma única instância**.
+  - Ex.: mudar de uma instância t2.micro para uma m5.large.
+  - Simples, mas limitada ao tamanho máximo da instância disponível.
+
+
+
+# Elastic Load Balancer (ELB)
+
+O **ELB** é um serviço gerenciado da AWS que distribui automaticamente o tráfego entre instâncias **EC2**.  
+Funciona no nível de região e é associado automaticamente a instâncias do grupo de balanceamento.
+
+## Tipos de ELB
+- **Application Load Balancer (ALB)**: ideal para aplicações web. Suporta roteamento baseado em conteúdo (Camada 7).  
+- **Network Load Balancer (NLB)**: alta performance e baixa latência. Opera na Camada 4 (TCP).  
+- **Gateway Load Balancer (GLB)**: encaminha tráfego para appliances de terceiros (ex.: firewalls virtuais).  
+
+## Recursos Avançados do ELB
+- Health Checks personalizados.  
+- Sticky Sessions (Sessões Persistentes).  
+- Roteamento baseado em regras.  
+- Integração com containers (Amazon ECS e Amazon EKS).  
+
+---
+
+# Auto Scaling
+
+O **Auto Scaling** ajusta automaticamente a quantidade de instâncias **EC2** com base em métricas como CPU e memória.  
+Garante capacidade suficiente para lidar com a demanda, sem desperdício de recursos.  
+
+---
+
+# Diferença entre ELB e Auto Scaling
+
+| **Serviço** | **Função Principal** | **Benefícios** |
+|-------------|-----------------------|----------------|
+| **ELB** | Distribui o tráfego entre instâncias EC2 | Balanceamento de carga, alta disponibilidade |
+| **Auto Scaling** | Ajusta a quantidade de instâncias conforme a demanda | Escalabilidade automática, economia de custos |
+| **Juntos** | **ELB** distribui tráfego + **Auto Scaling** adiciona/remove instâncias | Garantem disponibilidade, performance e escalabilidade automática |
+
+
+---
+
+## Tipos de Instâncias EC2
+| **Tipo de Instância**            | **Características**                         | **Casos de Uso**                                |
+|----------------------------------|---------------------------------------------|------------------------------------------------|
+| **Gerais**                       | Equilíbrio entre CPU, memória e rede        | Aplicações comuns, servidores web, dev/teste   |
+| **Otim. para Memória**           | Alta capacidade de RAM                      | Bancos de dados, caches, analytics em memória  |
+| **Otim. para Armazenamento**     | Alta performance de disco (IOPS elevados)   | Data lakes, Big Data, processamento de logs    |
+| **Otim. para Computação**        | Alto desempenho de CPU                      | Machine learning, simulações, processamento científico |
+
+
+---
+
+## Opções de Pagamento do Amazon EC2
+| **Modelo de Pagamento**  | **Descrição**                                          | **Quando Usar**                                      |
+|---------------------------|------------------------------------------------------|------------------------------------------------------|
+| **On-Demand**             | Paga apenas pelo tempo de uso, sem compromisso       | Cargas imprevisíveis, testes, ambientes temporários   |
+| **Reservadas**            | Compromisso de 1 ou 3 anos com desconto              | Cargas estáveis e previsíveis a longo prazo           |
+| **Saving Plans**          | Economia por hora, flexível entre instâncias         | Quando quer desconto mas precisa de flexibilidade     |
+| **Spot**                  | Usa capacidade ociosa com até 90% de desconto        | Tarefas tolerantes a interrupções, batch jobs, CI/CD  |
+| **Hosts Dedicados**       | Servidores físicos exclusivos                        | Conformidade de licenças e requisitos regulatórios    |
+
+
+
+# EBS – Elastic Block Store
+
+Serviço conhecido como **armazenamento em blocos** da AWS.  
+Usado geralmente com instâncias **EC2** para armazenar dados persistentes.  
+
+---
+
+## Tipos de Volumes EBS
+
+- **General Purpose SSD (gp2/gp3)**  
+  - Equilíbrio entre preço e performance.  
+  - Usado para a maioria das aplicações comuns.  
+
+- **Provisioned IOPS SSD (io1/io2)**  
+  - Alta performance com IOPS provisionados.  
+  - Indicado para bancos de dados críticos e aplicações que exigem alto throughput.  
+
+- **Throughput Optimized HDD (st1)**  
+  - Otimizado para throughput (taxa de transferência).  
+  - Ideal para data lakes, Big Data e cargas de trabalho de streaming.  
+
+- **Cold HDD (sc1)**  
+  - Baixo custo para dados acessados com pouca frequência.  
+  - Bom para arquivamento de longo prazo.  
+
+---
+
+## Características importantes do EBS
+- **Persistência:** dados não se perdem quando a instância EC2 é encerrada (se configurado).  
+- **Escalabilidade:** pode aumentar ou diminuir a capacidade conforme necessário.  
+- **Snapshot:** backups incrementais no **Amazon S3**.  
+- **Alta disponibilidade:** replicado automaticamente dentro da mesma **AZ (Availability Zone)**.  
+
+
+# Armazenamento na AWS
+
+- **HDD (Hard Disk Drive)**
+  - Mais espaço, menor custo, mas mais lento.
+  - Usado em volumes como **st1** (Throughput Optimized) e **sc1** (Cold HDD).
+
+- **SSD (Solid State Drive)**
+  - Mais rápido, mas com menos espaço.
+  - Usado em volumes como **gp2/gp3** (General Purpose) e **io1/io2** (Provisioned IOPS).
+
+- **Snapshots**
+  - Backups incrementais de volumes EBS.
+  - Armazenados no **Amazon S3**.
+  - Permitem restaurar volumes ou criar **AMIs**.
+
+- **AMI (Amazon Machine Image)**
+  - Imagem usada para lançar instâncias EC2.
+  - Contém SO, apps e configurações.
+
+- **EFS (Elastic File System)**
+  - Sistema de arquivos escalável e elástico baseado em NFS.
+  - Compartilhado entre múltiplas instâncias EC2.
+  - Ideal para aplicações que precisam de armazenamento **compartilhado**.
+
+- **FSx (File System X)**
+  - Serviço totalmente gerenciado para sistemas de arquivos de terceiros.
+  - Exemplos: **FSx for Windows File Server**, **FSx for Lustre**.
+
+- **FSx Lustre (HPC)**
+  - Sistema de arquivos de alto desempenho (HPC).
+  - Otimizado para workloads intensivas em computação e armazenamento, como machine learning, Big Data e HPC.
+
+# Comparação de Serviços de Armazenamento AWS
+
+| **Serviço** | **Tipo de Armazenamento** | **Características** | **Casos de Uso** |
+|-------------|----------------------------|---------------------|------------------|
+| **EBS (Elastic Block Store)** | **Bloco** (Block Storage) | Associado a uma instância **EC2**; volumes persistentes; suporta **HDD e SSD**; snapshots para backup. | Armazenamento de SO, bancos de dados, aplicações que precisam de discos persistentes. |
+| **EFS (Elastic File System)** | **Arquivo** (File Storage – NFS) | Sistema de arquivos totalmente gerenciado; escalável; pode ser acessado por múltiplas instâncias EC2 ao mesmo tempo. | Aplicações que precisam de **armazenamento compartilhado**; diretórios de usuários; microsserviços. |
+| **FSx for Windows File Server** | **Arquivo** (Windows FS) | Sistema de arquivos compatível com Windows (SMB, AD, NTFS); totalmente gerenciado. | Aplicações baseadas em Windows; migração de workloads on-premises para nuvem. |
+| **FSx for Lustre** | **Arquivo** (High Performance) | Sistema de arquivos de **alto desempenho (HPC)**; integração com **S3**; latência baixa e throughput muito alto. | HPC, machine learning, Big Data, renderização, analytics em larga escala. |
+
+
+# Banco de Dados
+
+## Relacionais (Banco de Dados Estruturados, SQL)  
+Os **bancos de dados relacionais** são ideais para aplicações que exigem consistência e integridade de **dados**.
+
+---
+
+## Não Relacionais (Banco de Dados Não Estruturados, NO-SQL)  
+**Bancos de dados não relacionais** são mais adequados para aplicações que exigem alta escalabilidade e flexibilidade no esquema de **dados**.
+
+---
+
+# AWS RDS (Banco de Dados Relacional)
+
+### Tipos de RDS AWS:
+- Aurora
+- MySQL
+- Oracle
+- Postgres
+- MariaDB
+- MS SQL
+
+---
+
+# ElastiCache (In Memory)
+
+O Amazon ElastiCache é um serviço totalmente gerenciado, compatível com Redis e Memcache, que oferece desempenho econômico e em tempo real para aplicações modernas.  
+
+O ElastiCache pode ser escalado para centenas de milhões de operações por segundo com tempo de resposta de microssegundos e oferece segurança e confiabilidade de nível corporativo.
+
+---
+
+# DynamoDB
+- **NoSQL**  
+- Já começa com 3 zonas de disponibilidades  
+- Serverless  
+
+---
+
+# Glue
+- **ETL (Extrair, Transformar, Carregar)**  
+- Muito utilizado por Analytics  
+
+---
+
+# Neptune
+- Muito utilizado por redes sociais que exigem grandes quantidades de links entre elas
+
+
+Aqui está a transcrição da imagem em **Markdown**, junto com as **categorias de armazenamento do Amazon S3**:
+
+---
+
+# S3 – Simple Storage Service (Bucket)
+
+* Serviço para armazenar objetos
+* Paga pelo uso
+* Pode ser utilizado para muitas utilidades
+* Nome Único mundialmente
+* Cria um endereço na Web
+
+---
+
+# Categorias de Armazenamento do S3
+
+O Amazon S3 oferece diferentes classes de armazenamento para atender a variados casos de uso:
+
+## 1. **S3 Standard**
+
+* Alta durabilidade e disponibilidade.
+* Recomendado para dados acessados frequentemente.
+
+## 2. **S3 Intelligent-Tiering**
+
+* Move objetos automaticamente entre camadas de acesso.
+* Reduz custos sem impactar desempenho.
+
+## 3. **S3 Standard-IA (Infrequent Access)**
+
+* Para dados acessados com pouca frequência.
+* Mais barato que o Standard, mas cobra por recuperação.
+
+## 4. **S3 One Zone-IA**
+
+* Armazena dados em uma única zona de disponibilidade.
+* Custos menores, porém menor resiliência.
+
+## 5. **S3 Glacier Instant Retrieval**
+
+* Recuperação rápida de dados de arquivamento.
+* Custo muito menor que o Standard.
+
+## 6. **S3 Glacier Flexible Retrieval**
+
+* Armazenamento de baixo custo para arquivamento.
+* Recuperação em minutos a horas.
+
+## 7. **S3 Glacier Deep Archive**
+
+* Mais barato para armazenamento de longo prazo.
+* Recuperação em até 12 horas.
+
+## 8. **S3 Outposts**
+
+* Oferece armazenamento S3 em ambientes on-premises.
+* Ideal para requisitos de residência de dados.
+
+---
+
+Boa! Além das **categorias de armazenamento**, o **Amazon S3** também possui o recurso de **versionamento**, que é muito importante para controle de dados.
+
+---
+
+#  Versionamento no S3
+
+O **versionamento** permite que você mantenha várias versões de um mesmo objeto dentro de um bucket. Assim, é possível recuperar, restaurar ou mesmo proteger dados contra exclusão acidental.
+
+## Principais Características
+
+* **Controle de versões:** cada alteração cria uma nova versão do objeto, preservando as anteriores.
+* **Recuperação de dados:** é possível restaurar versões antigas em caso de perda ou corrupção.
+* **Proteção contra exclusão:** quando um objeto é deletado, o S3 insere um *delete marker* (marcador de exclusão), mas as versões anteriores continuam armazenadas.
+* **Integração com MFA Delete:** adiciona uma camada extra de segurança exigindo autenticação multifator para apagar versões.
+
+## Estados do Versionamento
+
+1. **Unversioned (padrão):** o bucket não tem versionamento habilitado.
+2. **Enabled (ativado):** o S3 passa a armazenar múltiplas versões dos objetos.
+3. **Suspended (suspenso):** novas versões deixam de ser criadas, mas as versões antigas continuam existindo.
+
+## Exemplo de uso
+
+* Um arquivo `relatorio.pdf` pode ter:
+
+  * Versão 1: upload inicial
+  * Versão 2: alterações de conteúdo
+  * Versão 3: exclusão → gera *delete marker*
+
+---
+
+# Criptografia no S3
+
+Quando você guarda dados no **Amazon S3**, pode querer que eles fiquem protegidos. A criptografia é como colocar um **cadeado** nos seus arquivos. Existem duas formas principais:
+
+---
+
+## 1. **Server Side Encryption (SSE)**
+
+* O **próprio S3 faz a criptografia** dos dados quando eles chegam no bucket.
+* Ele guarda os arquivos já trancados e, quando alguém autorizado pede acesso, o S3 usa as chaves para destrancar.
+* É simples para o usuário, porque a AWS faz quase todo o trabalho.
+
+---
+
+## 2. **Client Side Encryption (CSE)**
+
+* Aqui, **o usuário criptografa os dados antes de enviar para o S3**.
+* O bucket só armazena os arquivos já protegidos.
+* A AWS não tem acesso às chaves — apenas o usuário pode decifrar.
+* Garante mais controle, mas também mais responsabilidade.
+
+---
+
+Em resumo:
+
+* **SSE:** o S3 cuida da segurança para você.
+* **CSE:** você mesmo cuida da segurança, e a AWS só armazena os dados já protegidos.
+
+
+
+---
+
+# O que é o Storage Gateway?
+
+![Fluxo de dados do servidor local para a AWS usando o Storage Gateway.](./assets/diagrama-storage-gateway.png)
+
+O **AWS Storage Gateway** é um serviço que conecta seu **servidor local (on-premises)** à **nuvem da AWS**. Ele serve como uma "ponte" (gateway) para mover ou sincronizar dados entre sua infraestrutura física e os serviços de armazenamento da AWS (como S3, Glacier ou EBS).
+
+---
+
+# Características principais
+
+* **Migração e backup**: Permite copiar arquivos, volumes ou fitas virtuais de um servidor físico para a nuvem.
+* **Híbrido**: Pode ser instalado como um **dispositivo físico** no seu datacenter ou como uma **máquina virtual** (VM).
+* **Integração**: Funciona com serviços como **S3** (armazenamento de objetos), **Glacier** (arquivamento de longo prazo) e **EBS** (volumes de bloco).
+
+---
+
+# 🛠️ Modos de operação do Storage Gateway
+
+1. **File Gateway**
+
+   * Usa protocolos de arquivo (NFS/SMB).
+   * Ideal para armazenar arquivos no S3 de forma simples.
+
+2. **Volume Gateway**
+
+   * Funciona como discos virtuais (iSCSI).
+   * Permite backups automáticos no S3/EBS.
+
+3. **Tape Gateway**
+
+   * Emula fitas de backup físicas.
+   * Permite usar soluções de backup antigas, mas armazenando na nuvem.
+
+---
+ Em resumo:
+O **Storage Gateway** é como um **túnel** que liga seu datacenter à AWS, permitindo **backup, migração e integração** entre sistemas locais e a nuvem.
+
+
+---
+
+# Snow Family (Snowcone, Snowball, Snowmobile)
+
+* **O que é?**
+  Conjunto de dispositivos físicos da AWS usados para **mover grandes quantidades de dados** do seu datacenter para a nuvem.
+
+  * **Snowcone:** pequeno, portátil (até 8TB).
+  * **Snowball:** médio porte (50–80TB).
+  * **Snowmobile:** um caminhão inteiro (até 100PB).
+
+* **Quando usar?**
+
+  * Quando você tem **muitos dados (terabytes ou petabytes)** que seriam lentos ou caros de transferir pela internet.
+  * Locais com **conexão de rede limitada ou inexistente**.
+  * Migração única ou periódica de grande volume de dados.
+
+---
+
+# Storage Gateway
+
+* **O que é?**
+  Serviço que funciona como um **"conector híbrido"** entre o seu ambiente local e a AWS. Ele não transporta fisicamente dados, mas sim faz **integração contínua pela rede**.
+
+  * Pode expor **arquivos (File Gateway)**, **volumes (Volume Gateway)** ou **fitas virtuais (Tape Gateway)**.
+  * Sincroniza e envia dados para a AWS em tempo real ou quase real.
+
+* **Quando usar?**
+
+  * Se você precisa de **acesso contínuo** entre sua infraestrutura local e a nuvem.
+  * Para **backup, recuperação e extensão** de armazenamento local para a AWS.
+  * Quando a **rede suporta** a transferência de dados de forma constante.
+
+---
+
+#  Resumindo a diferença
+
+* **Snow Family:** transporte de dados em massa usando dispositivos físicos → ideal para migração inicial ou locais sem boa internet.
+* **Storage Gateway:** integração em tempo real entre local e nuvem pela rede → ideal para operação híbrida e backups contínuos.
+
+---
+
+Um jeito fácil de lembrar:
+
+* **Preciso mandar um caminhão de dados de uma vez só? → Snow Family**
+* **Preciso conectar meu sistema local e a AWS no dia a dia? → Storage Gateway**
+
+---
+
