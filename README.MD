@@ -530,10 +530,6 @@ O Amazon S3 oferece diferentes classes de armazenamento para atender a variados 
 
 ---
 
-Boa! Além das **categorias de armazenamento**, o **Amazon S3** também possui o recurso de **versionamento**, que é muito importante para controle de dados.
-
----
-
 #  Versionamento no S3
 
 O **versionamento** permite que você mantenha várias versões de um mesmo objeto dentro de um bucket. Assim, é possível recuperar, restaurar ou mesmo proteger dados contra exclusão acidental.
@@ -713,9 +709,7 @@ Você **sempre usa uma VPC** quando cria recursos de rede na AWS.
 Em resumo:
 A VPC é o **“condomínio fechado”** onde você organiza e protege os recursos da sua aplicação dentro da AWS.
 
----
 
-Boa! Vamos falar sobre **NACL (Network Access Control List)** dentro da VPC da AWS 👇
 
 ---
 
@@ -807,9 +801,6 @@ O **VPC Peering** é uma forma de **conectar duas VPCs** (Virtual Private Clouds
  Em resumo:
 O **VPC Peering** é ótimo para conectar **duas ou poucas VPCs**.
 
-
-Boa! Agora vamos falar de **AWS Transit Gateway** 🚀
-
 ---
 
 # O que é o Transit Gateway?
@@ -899,11 +890,6 @@ Ele cria um **atalho privado** entre a sua rede (VPC) e os serviços da AWS, usa
 
 Em resumo:
 O **VPC Endpoint** é como abrir uma **porta privada** para falar com os serviços da AWS, sem precisar passar pela internet.
-
----
-
-
-Boa! Vamos falar de **VPN Site-to-Site** na AWS 👇
 
 ---
 
