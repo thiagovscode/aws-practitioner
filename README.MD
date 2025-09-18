@@ -1268,3 +1268,166 @@ O **S3 Transfer Acceleration** é como usar a **“pista expressa” da AWS** pa
 
 ---
 
+
+#  O que é o Amazon SNS?
+
+O **Amazon SNS** é um serviço de **mensageria e notificações** totalmente gerenciado da AWS.
+Ele permite **publicar mensagens** em um **tópico**, e essas mensagens são entregues a **vários assinantes** ao mesmo tempo (modelo *pub/sub*).
+
+---
+
+# Principais características
+
+* **Pub/Sub (Publish/Subscribe)**
+
+  * Você cria um **tópico**.
+  * Aplicações ou serviços **publicam** mensagens nesse tópico.
+  * Um ou mais **assinantes** recebem essas mensagens (ex: SQS, Lambda, HTTP endpoint, e-mail, SMS, push notification).
+
+* **Entrega escalável**
+
+  * Milhares ou milhões de assinantes podem receber mensagens.
+
+* **Alta disponibilidade**
+
+  * Totalmente gerenciado pela AWS, com redundância e resiliência.
+
+* **Filtros de mensagem**
+
+  * Assinantes podem receber apenas mensagens que atendam a certos critérios.
+
+---
+
+# Casos de uso
+
+* **Notificações em tempo real**: enviar alertas por SMS, push ou e-mail.
+* **Integração entre sistemas**: SNS publica → SQS recebe → processadores consomem.
+* **Eventos de aplicações**: quando algo acontece (ex: upload em S3), SNS pode disparar uma Lambda.
+* **Alertas de monitoramento**: CloudWatch pode enviar alarmes via SNS.
+
+---
+# Exemplo simples
+
+1. Um **aplicativo** publica uma mensagem: "Novo pedido criado!".
+2. O **tópico SNS** recebe.
+3. **Assinantes** recebem:
+
+   * Sistema de faturamento (via SQS).
+   * Envio de e-mail para o cliente.
+   * Função Lambda para atualizar estoque.
+
+---
+ Em resumo:
+O **Amazon SNS** é como um **megafone na nuvem**: você fala em um tópico, e todos os inscritos escutam ao mesmo tempo.
+
+---
+
+
+#  O que é um **tópico** no Amazon SNS?
+
+No **SNS**, um **tópico** é como um **canal de comunicação**.
+
+* Os **publicadores (publishers)** mandam mensagens para esse canal.
+* Os **assinantes (subscribers)** que estão inscritos nesse canal recebem a mensagem automaticamente.
+
+---
+
+# Características de um tópico
+
+* **Centralizador**: concentra todas as mensagens que os publicadores enviam.
+* **Múltiplos assinantes**: um mesmo tópico pode ter vários destinos (ex: SQS, Lambda, e-mail, SMS).
+* **Escalabilidade**: pode atender desde 1 até milhões de assinantes.
+* **Tipos de protocolo de entrega**: suporta HTTP/S, e-mail, SMS, Lambda, SQS e aplicativos móveis (push).
+
+---
+
+# Exemplo prático
+
+Imagine que você tem um sistema de **loja online**:
+
+1. **Tópico SNS:** `NovoPedido`
+2. **Publicador:** o sistema de checkout publica uma mensagem → "Pedido #123 criado"
+3. **Assinantes:**
+
+   * **SQS** → fila para processar faturamento
+   * **Lambda** → atualiza o estoque
+   * **E-mail** → notifica o cliente
+   * **SMS** → notifica o entregador
+
+Resultado: **uma mensagem** publicada → **vários destinos notificados ao mesmo tempo**.
+
+---
+ Em resumo:
+Um **tópico SNS** é como um **grupo do WhatsApp**:
+
+* Você manda uma mensagem no grupo (**publicador**).
+* Todos os participantes (**assinantes**) recebem a notificação.
+
+---
+
+# O que é o Amazon SQS?
+
+O **Amazon SQS** é um serviço totalmente gerenciado de **mensageria baseada em filas**.
+Ele permite que sistemas e aplicações se comuniquem de forma **assíncrona e desacoplada**.
+
+ Pense nele como uma **fila de correios**:
+
+* Um sistema coloca a mensagem na fila.
+* Outro sistema pega essa mensagem e processa quando puder.
+
+---
+
+# Principais características
+
+* **Mensageria assíncrona**: produtores e consumidores não precisam estar online ao mesmo tempo.
+* **Alta escalabilidade**: suporta milhões de mensagens por segundo.
+* **Durabilidade**: mensagens ficam armazenadas até serem processadas ou expirarem.
+* **Entrega garantida**: cada mensagem é entregue pelo menos uma vez.
+* **Controle de visibilidade**: impede que múltiplos consumidores processem a mesma mensagem ao mesmo tempo.
+
+---
+
+# Tipos de filas no SQS
+
+1. **Standard Queue** (padrão)
+
+   * Entrega **pelo menos uma vez** (pode ter duplicadas).
+   * **Alta taxa de throughput** (ilimitada).
+   * Ordem das mensagens **não é garantida**.
+
+2. **FIFO Queue** (First-In-First-Out)
+
+   * Entrega **exatamente uma vez**.
+   * Mantém a **ordem estrita** das mensagens.
+   * Taxa de throughput limitada (mas previsível).
+
+---
+
+# Casos de uso
+
+* **Processamento assíncrono**:
+  Ex: upload de imagem → SQS recebe evento → worker processa a imagem depois.
+* **Fila de pedidos**:
+  Ex: e-commerce → pedidos vão para a fila → sistemas de estoque, pagamento e entrega consomem.
+* **Desacoplamento de microsserviços**:
+  Ex: microserviço A envia mensagem para fila → microserviço B processa sem depender do A diretamente.
+
+---
+
+
+ Em resumo:
+O **Amazon SQS** é como uma **fila de tarefas** que garante que cada mensagem será processada, permitindo que sistemas trabalhem de forma **independente, escalável e confiável**.
+
+
+# SNS vs SQS
+
+| **SNS**                                | **SQS**                                      |
+| -------------------------------------- | -------------------------------------------- |
+| Push (envia mensagens para assinantes) | Pull (consumidores buscam mensagens na fila) |
+| Entrega em tempo real                  | Processamento assíncrono                     |
+| 1 mensagem → muitos assinantes         | 1 mensagem → 1 consumidor por vez            |
+| Bom para notificações, broadcast       | Bom para processamento distribuído           |
+
+---
+
+
