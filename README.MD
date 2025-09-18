@@ -1063,4 +1063,208 @@ O **VPC Flow Logs** é um recurso da AWS que **captura informações sobre o tr�
  Em resumo:
 O **VPC Flow Logs** é como uma **câmera de vigilância da sua rede** dentro da AWS: ele não mostra o conteúdo da conversa, mas mostra **quem falou com quem, quando e se foi permitido**.
 
+---
+
+# O que é o Route 53?
+
+O **Amazon Route 53** é o **serviço de DNS gerenciado da AWS**.
+Ele é responsável por **traduzir nomes de domínio (ex: [www.exemplo.com](http://www.exemplo.com))** em endereços IP (ex: 192.0.2.1) para que usuários e aplicações consigam se conectar aos recursos certos.
+
+Além de DNS, ele também faz **roteamento de tráfego** e pode funcionar como **registrador de domínios**.
+
+---
+
+# Principais funcionalidades
+
+* **DNS (Domain Name System)**
+  Resolve nomes de domínio para IPs de forma rápida e global.
+
+* **Registrar domínios**
+  Permite comprar e gerenciar domínios diretamente pela AWS.
+
+* **Health Checks & Failover**
+  Monitora a saúde de endpoints (ex: servidores web) e redireciona tráfego se algum ficar fora do ar.
+
+* **Vários tipos de roteamento**:
+
+  * **Simple Routing** → envia todo tráfego para um único recurso.
+  * **Weighted Routing** → distribui tráfego proporcionalmente (ex: 70% para app A, 30% para app B).
+  * **Latency-based Routing** → direciona para o servidor com menor latência.
+  * **Geolocation Routing** → responde com base na localização do usuário.
+  * **Failover Routing** → mantém recurso primário ativo e usa backup só se necessário.
+
+---
+
+# Quando usar?
+
+* Se você precisa de um **DNS escalável e global** para aplicações na AWS ou fora dela.
+* Para **balanceamento inteligente de tráfego** entre múltiplas regiões.
+* Quando deseja **alta disponibilidade**, redirecionando tráfego automaticamente em caso de falha.
+* Para gerenciar **zonas públicas e privadas** (ex: resolver domínios internos dentro de uma VPC).
+
+---
+
+# Route 53 vs Load Balancer
+
+* **Route 53** → decide **para onde o tráfego vai**, com base em DNS e regras de roteamento.
+* **Elastic Load Balancer (ELB)** → distribui **o tráfego entre múltiplas instâncias** dentro de uma VPC.
+
+Muitas vezes os dois são usados juntos:
+
+* O **Route 53** resolve `app.exemplo.com` para o **ELB**, e o **ELB** distribui entre os servidores.
+
+---
+
+Em resumo:
+O **Amazon Route 53** é o **serviço de DNS e roteamento inteligente da AWS**, garantindo que usuários cheguem no recurso certo, da forma mais rápida e confiável possível.
+
+
+---
+
+# O que é o CloudFront?
+
+O **Amazon CloudFront** é o serviço de **CDN (Content Delivery Network)** da AWS.
+Ele serve para **entregar conteúdos (arquivos, sites, vídeos, APIs)** de forma rápida, segura e com baixa latência para usuários em qualquer lugar do mundo.
+
+Ele faz isso distribuindo o conteúdo em **Edge Locations** (pontos de presença) espalhados globalmente.
+
+---
+
+# Principais características
+
+* **Baixa latência** → entrega o conteúdo pelo **edge mais próximo do usuário**.
+* **Cache** → armazena cópias de objetos (imagens, vídeos, etc.) para reduzir carga no servidor de origem.
+* **Segurança** → integrado ao **AWS Shield** (proteção DDoS) e **AWS WAF** (firewall de aplicações).
+* **Escalabilidade automática** → lida com picos de tráfego sem esforço.
+* **Integração com S3 e ALB/EC2** → pode entregar conteúdo diretamente de buckets do S3, Load Balancers ou instâncias.
+
+---
+
+# Casos de uso
+
+* Hospedar **sites estáticos e dinâmicos** com performance global.
+* Distribuir **conteúdo multimídia** (streaming de vídeo e áudio).
+* **Aceleração de APIs** → baixa latência para chamadas de API em apps móveis/web.
+* **Proteção de aplicações** → combinando com WAF e certificados TLS.
+
+---
+
+# CloudFront vs S3 Static Website Hosting
+
+| **S3 Website Hosting**        | **CloudFront**                             |
+| ----------------------------- | ------------------------------------------ |
+| Entrega direto do bucket      | Entrega via rede global de edge locations  |
+| Boa para uso simples          | Melhor para performance global e segurança |
+| Sem cache distribuído         | Cache em múltiplas regiões                 |
+| Não oferece proteção DDoS/WAF | Integrado a segurança avançada             |
+
+---
+
+ Em resumo:
+O **CloudFront** é como um **delivery rápido e seguro para os seus dados**: ele pega o conteúdo da origem (ex: S3 ou EC2), guarda cópias no mundo todo, e entrega para o usuário pelo caminho mais curto.
+
+---
+
+# O que é o AWS Global Accelerator?
+
+O **Global Accelerator** é um serviço de rede da AWS que melhora a **disponibilidade** e o **desempenho** de aplicações globais.
+Ele faz isso roteando o tráfego dos usuários para o **endpoint AWS mais próximo e saudável**, usando a **rede global da Amazon** em vez da internet pública.
+
+---
+
+# Principais características
+
+* **Anycast IP**:
+
+  * O serviço fornece **dois IPs estáticos globais** que servem como ponto único de entrada.
+  * Independente de onde o usuário esteja, sempre acessa o mesmo IP.
+
+* **Roteamento inteligente**:
+
+  * Redireciona usuários automaticamente para o endpoint mais próximo e disponível.
+  * Usa a rede da AWS para reduzir latência e evitar congestionamentos da internet pública.
+
+* **Alta disponibilidade**:
+
+  * Se um endpoint falhar (ex: região fora do ar), o tráfego é redirecionado para outro ativo.
+
+* **Integração com serviços da AWS**:
+
+  * Funciona com **EC2, Application Load Balancer, Network Load Balancer, Elastic IPs, etc.**
+
+---
+
+# Quando usar?
+
+* **Aplicações globais**: jogos online, streaming, apps financeiros ou SaaS.
+* **Alta disponibilidade**: precisa garantir que usuários sempre cheguem em algum endpoint saudável.
+* **Melhoria de latência**: usuários espalhados pelo mundo acessando a aplicação.
+* **IP fixo**: útil para clientes que não querem mudar configuração de firewall/DNS quando há alterações de endpoint.
+
+---
+
+# Global Accelerator vs CloudFront
+
+| **Global Accelerator**                                                        | **CloudFront**                                              |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Focado em **aplicações dinâmicas** (TCP/UDP, APIs, jogos, apps em tempo real) | Focado em **conteúdo estático** (imagens, vídeos, arquivos) |
+| Usa **Anycast IPs** fixos                                                     | Usa **domínios (CNAME)**                                    |
+| Encaminha tráfego para **endpoints específicos** (EC2, ALB, NLB)              | Distribui conteúdo em cache em **edge locations**           |
+| Melhora **latência e disponibilidade de apps**                                | Melhora **latência de entrega de arquivos**                 |
+
+---
+
+Em resumo:
+
+* **CloudFront** → acelera **conteúdo estático** (CDN).
+* **Global Accelerator** → acelera **aplicações dinâmicas** e garante **alta disponibilidade**.
+
+---
+
+#  O que é o Transfer Acceleration?
+
+O **S3 Transfer Acceleration** é um recurso do **Amazon S3** que permite **enviar e receber arquivos mais rapidamente** entre o seu cliente (upload/download) e o bucket S3.
+
+Ele usa a **rede global de edge locations da AWS (CloudFront)** para acelerar a transferência de dados, especialmente quando o cliente está **longe da região do bucket**.
+
+---
+
+# Como funciona?
+
+1. O usuário faz upload/download para um **endpoint especial** do S3 (ex: `bucketname.s3-accelerate.amazonaws.com`).
+2. Esse tráfego vai para a **edge location mais próxima do cliente**.
+3. A partir da edge, a AWS usa sua **rede privada global** para transferir os dados até o bucket.
+
+---
+
+# Quando usar?
+
+* Quando usuários/clientes estão **geograficamente distantes** da região onde o bucket foi criado.
+* Uploads grandes (ex: arquivos de mídia, backups, datasets).
+* Cenários globais, como apps que coletam dados de várias regiões do mundo em um único bucket.
+
+---
+
+# Transfer Acceleration vs Opções comuns
+
+| **Método**                   | **Quando usar**                                                  |
+| ---------------------------- | ---------------------------------------------------------------- |
+| **S3 normal**                | Usuários próximos à região do bucket, uploads pequenos/usuais    |
+| **Multipart Upload**         | Arquivos muito grandes (dividir em partes)                       |
+| **S3 Transfer Acceleration** | Usuários globais distantes do bucket, quando performance importa |
+
+---
+
+# Custos
+
+* O **Transfer Acceleration é cobrado à parte** (por GB transferido).
+* Pode sair mais caro que o upload normal, mas justifica-se quando há ganho de velocidade.
+* A AWS oferece um **Speed Comparison Tool** para comparar antes de habilitar.
+
+---
+
+Em resumo:
+O **S3 Transfer Acceleration** é como usar a **“pista expressa” da AWS** para enviar/receber arquivos do S3, ótimo quando você tem **usuários espalhados pelo mundo**.
+
+---
 
