@@ -1429,5 +1429,175 @@ O **Amazon SQS** é como uma **fila de tarefas** que garante que cada mensagem s
 | Bom para notificações, broadcast       | Bom para processamento distribuído           |
 
 ---
+ 
+
+# O que é o Kinesis Data Streams?
+
+O **Kinesis Data Streams (KDS)** é um serviço da AWS para **processamento de dados em tempo real**.
+Ele permite coletar e analisar **fluxos contínuos de dados** (streams), como logs, cliques de usuários, transações financeiras, telemetria de IoT, etc.
+
+---
+
+# Como funciona?
+
+1. **Produtores** (apps, IoT devices, logs, etc.) enviam dados para o stream.
+2. O stream é dividido em **shards** (fatias paralelas de processamento).
+3. **Consumidores** (como AWS Lambda, Kinesis Data Analytics, EC2, Firehose) leem os dados em tempo quase real.
+
+---
+
+#  Principais características
+
+* **Baixa latência**: processamento em milissegundos.
+* **Escalabilidade**: aumenta shards para suportar mais dados.
+* **Retenção**: mantém dados por padrão até 24h (pode ser expandido até 365 dias).
+* **Entrega garantida**: mensagens replicadas em múltiplas zonas de disponibilidade.
+* **Integração nativa** com serviços como Lambda, Firehose, S3, Redshift, Elasticsearch.
+
+---
+
+#  Casos de uso
+
+* **Monitoramento em tempo real**: logs de aplicações, métricas de servidores.
+* **Analytics em streaming**: analisar cliques de usuários em sites e apps.
+* **Fraude financeira**: detectar padrões suspeitos em transações ao vivo.
+* **IoT**: processar dados de sensores em tempo real.
+
+---
+
+# Kinesis Streams vs SQS vs Kafka
+
+| **Kinesis Data Streams**                       | **SQS**                               | **Kafka (self-managed)**                                 |
+| ---------------------------------------------- | ------------------------------------- | -------------------------------------------------------- |
+| Focado em **dados em tempo real**              | Focado em **filas assíncronas**       | Similar ao Kinesis, mas precisa gerenciar infraestrutura |
+| **Vários consumidores** podem ler o mesmo dado | Mensagem é consumida por 1 consumidor | Vários consumidores (tópicos/partições)                  |
+| Escalabilidade com **shards**                  | Escalabilidade automática             | Escalabilidade com clusters                              |
+| Integrado com AWS (serverless-friendly)        | Integrado com AWS                     | Precisa de operação e manutenção                         |
+
+---
+
+ Em resumo:
+O **Amazon Kinesis Streams** é como um **rio de dados em tempo real**, que pode ser lido por várias aplicações ao mesmo tempo para gerar insights, acionar eventos ou armazenar.
 
 
+
+#  O que é o Docker?
+
+O **Docker** é uma plataforma que permite **empacotar aplicações e suas dependências** em **containers**.
+Esses containers são leves, portáteis e garantem que a aplicação rode da **mesma forma** em qualquer ambiente (seja no seu notebook, servidor ou nuvem).
+
+ Pense no container como uma **caixinha isolada** que leva tudo que a aplicação precisa para funcionar.
+
+---
+
+# Principais conceitos
+
+* **Imagem (Image)**
+
+  * É como uma **receita**: descreve tudo o que a aplicação precisa (código, bibliotecas, sistema base).
+  * Exemplo: `python:3.11` é uma imagem oficial com o Python 3.11 já pronto.
+
+* **Container**
+
+  * É uma **instância em execução da imagem**.
+  * Se a imagem é a receita, o container é o **prato pronto**.
+
+* **Dockerfile**
+
+  * Arquivo de instruções para construir uma imagem personalizada.
+  * Exemplo: “use Python 3.11, copie meu código, instale dependências e rode a aplicação”.
+
+* **Docker Hub**
+
+  * Um repositório público (como o GitHub, mas para imagens Docker).
+
+---
+
+# Benefícios
+
+* **Portabilidade**: roda igual em qualquer lugar.
+* **Isolamento**: cada aplicação tem seu próprio ambiente.
+* **Escalabilidade**: fácil subir vários containers iguais.
+* **Rapidez**: containers iniciam muito mais rápido que VMs.
+
+---
+
+# Exemplos de uso
+
+* Desenvolver uma API em Python e rodar localmente no mesmo ambiente que será usado em produção.
+* Subir um banco de dados (MySQL, PostgreSQL) em segundos para testes.
+* Usar junto com **Kubernetes** para orquestrar centenas/milhares de containers.
+
+---
+
+#  Docker vs Máquina Virtual (VM)
+
+| **Docker (Container)**           | **Máquina Virtual**                     |
+| -------------------------------- | --------------------------------------- |
+| Leve (compartilha kernel)        | Pesada (cada VM tem SO completo)        |
+| Inicia em segundos               | Pode levar minutos                      |
+| Usa menos recursos               | Usa mais CPU/RAM                        |
+| Ideal para microserviços e CI/CD | Ideal para workloads isolados e legados |
+
+---
+
+ Em resumo:
+O **Docker** é uma forma moderna de **empacotar, distribuir e rodar aplicações** em qualquer lugar, de forma rápida e consistente.
+
+---
+
+#  Amazon ECS (Elastic Container Service)
+
+* **O que é?**
+  Serviço de orquestração de containers **gerenciado pela AWS**, feito sob medida para rodar no ecossistema da Amazon.
+
+* **Características**
+
+  * Não precisa instalar nada, a AWS cuida da gestão do cluster.
+  * Suporta execução em **EC2** (máquinas virtuais) ou em **Fargate** (serverless para containers).
+  * Simples de usar se você já está no mundo AWS.
+
+* **Quando usar?**
+
+  * Se você quer **simplicidade** e integração forte com a AWS.
+  * Se não precisa de compatibilidade com clusters fora da AWS.
+
+---
+
+# Amazon EKS (Elastic Kubernetes Service)
+
+* **O que é?**
+  Serviço da AWS para rodar **Kubernetes** gerenciado.
+  Kubernetes é uma ferramenta **open source** de orquestração de containers, padrão de mercado.
+
+* **Características**
+
+  * Você continua usando APIs e ferramentas do Kubernetes.
+  * Portabilidade: pode mover workloads entre AWS, Google Cloud, Azure ou on-premises.
+  * Mais complexo, mas muito mais **flexível**.
+
+* **Quando usar?**
+
+  * Se você já usa Kubernetes em outro lugar.
+  * Se precisa de **portabilidade multicloud**.
+  * Se a aplicação exige recursos avançados do Kubernetes.
+
+---
+
+# ECS vs EKS (Resumo)
+
+| **ECS**                                | **EKS**                                          |
+| -------------------------------------- | ------------------------------------------------ |
+| Proprietário da AWS                    | Padrão de mercado (Kubernetes)                   |
+| Mais simples, menos flexível           | Mais complexo, muito flexível                    |
+| Fácil de começar, menos configuração   | Curva de aprendizado maior                       |
+| Perfeito para quem já vive 100% na AWS | Ideal para multicloud ou Kubernetes já existente |
+
+---
+
+Em resumo:
+
+* Use **ECS** se quer praticidade e não precisa sair da AWS.
+* Use **EKS** se já trabalha com Kubernetes ou quer liberdade de rodar containers em **qualquer lugar**.
+
+---
