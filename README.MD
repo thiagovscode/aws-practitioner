@@ -1826,5 +1826,60 @@ Ele oferece um conjunto **pré-configurado** de recursos de computação, rede e
 O **Amazon Lightsail** é como a **porta de entrada da AWS**: fácil, barato e rápido para começar.
 Se o projeto crescer e precisar de mais recursos, você pode migrar para **EC2** e usar toda a potência da AWS.
 
+
+
+# O que é o AWS Batch?
+
+O **AWS Batch** é um serviço gerenciado da AWS que permite **executar workloads batch** — ou seja, **tarefas em lote** que podem rodar de forma paralela ou agendada — sem precisar gerenciar servidores manualmente.
+
+Ele provisiona automaticamente os recursos de computação necessários (EC2 ou Fargate) para rodar os jobs.
+
 ---
+
+# Principais características
+
+* **Gerenciamento automático de recursos**
+
+  * Escala a quantidade de instâncias ou tasks conforme a demanda de jobs.
+  * Usa instâncias EC2 On-Demand, Spot ou Fargate.
+
+* **Jobs e filas**
+
+  * Você submete **jobs** (tarefas) a **job queues** (filas).
+  * O AWS Batch pega os jobs das filas e os executa em um **job definition** (configuração do container, memória, vCPU, etc).
+
+* **Baseado em containers**
+
+  * Cada job roda em um **container Docker**.
+  * Fácil integrar com ECR (Elastic Container Registry).
+
+* **Integração com outros serviços**
+
+  * Pode ser disparado por **Step Functions**, **EventBridge**, **S3** ou manualmente.
+
+---
+
+# Casos de uso
+
+* **Processamento científico**: simulações, análises de grandes datasets.
+* **ETL em Big Data**: extrair, transformar e carregar dados periodicamente.
+* **Renderização de mídia**: processar imagens, vídeos ou efeitos visuais em lotes.
+* **Machine Learning**: treinar modelos em larga escala ou rodar inferências em massa.
+
+---
+
+# Batch vs Lambda vs Fargate
+
+| **Batch**                                    | **Lambda**                            | **Fargate**                    |
+| -------------------------------------------- | ------------------------------------- | ------------------------------ |
+| Workloads longos e pesados (horas/dias)      | Funções curtas (máx. 15 min)          | Containers médios, flexíveis   |
+| Baseado em containers (Docker)               | Código direto (Python, Node.js, etc.) | Containers (Docker)            |
+| Ideal para processamento científico, ML, ETL | Automação e eventos rápidos           | Microserviços e jobs contínuos |
+| Escala via filas de jobs                     | Escala por eventos                    | Escala sob demanda             |
+
+---
+
+Em resumo:
+O **AWS Batch** é perfeito para **trabalhos pesados em lote**, rodando em containers e escalando automaticamente sem que você precise se preocupar com a infraestrutura.
+
 
