@@ -1601,3 +1601,51 @@ Em resumo:
 * Use **EKS** se já trabalha com Kubernetes ou quer liberdade de rodar containers em **qualquer lugar**.
 
 ---
+
+#  O que é o Amazon ECR?
+
+O **Amazon ECR** é o **serviço de registro de containers** da AWS.
+Ele funciona como um **repositório privado (ou público)** onde você pode **armazenar, gerenciar e compartilhar imagens de containers Docker/OCI**.
+
+ Pense nele como o **“Docker Hub da AWS”**, mas integrado diretamente com **ECS, EKS, Lambda** e outros serviços.
+
+---
+
+# Principais características
+
+* **Repositórios privados e públicos**
+
+  * Repositórios privados para uso interno.
+  * Repositórios públicos (Amazon ECR Public) para compartilhar imagens com a comunidade.
+
+* **Integração nativa**
+
+  * Funciona direto com **ECS (orquestrador da AWS)** e **EKS (Kubernetes)**.
+  * Fácil deploy de containers sem precisar de registro externo.
+
+* **Segurança**
+
+  * Suporte a **IAM policies** para controle de acesso.
+  * **Scan automático de vulnerabilidades** em imagens.
+  * Criptografia automática em repouso com KMS.
+
+* **Escalabilidade e performance**
+
+  * Armazenamento altamente disponível.
+  * Transferência rápida de imagens para clusters.
+
+---
+
+# Quando usar
+
+* Quando você precisa **armazenar e versionar imagens de containers** usadas em ECS, EKS ou Lambda.
+* Se deseja manter um **registro privado seguro**, sem depender de serviços externos como Docker Hub.
+* Para **automatizar pipelines CI/CD**, puxando imagens direto do ECR para deploy.
+
+---
+
+
+👉 Em resumo:
+O **Amazon ECR** é o **repositório de containers da AWS**, pensado para integrar com seus clusters e pipelines, com **segurança e performance gerenciadas pela Amazon**.
+
+---
