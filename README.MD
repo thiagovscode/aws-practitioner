@@ -1883,3 +1883,218 @@ Em resumo:
 O **AWS Batch** é perfeito para **trabalhos pesados em lote**, rodando em containers e escalando automaticamente sem que você precise se preocupar com a infraestrutura.
 
 
+# O que é o AWS Trusted Advisor?
+
+O **AWS Trusted Advisor** é uma **ferramenta de recomendação** da AWS que analisa sua conta e sugere melhorias em boas práticas da nuvem.
+Ele é como um **consultor digital**, ajudando a deixar sua infraestrutura mais **segura, eficiente e econômica**.
+
+---
+
+# Áreas que o Trusted Advisor cobre
+
+1. **Custo (Cost Optimization)**
+
+   * Identifica recursos não utilizados (ex: instâncias paradas, IPs elásticos sem uso).
+   * Sugere como reduzir gastos.
+
+2. **Performance**
+
+   * Recomenda melhorias para otimizar desempenho (ex: balanceamento, limites de serviço).
+
+3. **Segurança (Security)**
+
+   * Alerta sobre portas abertas, permissões excessivas em IAM, buckets S3 públicos, etc.
+
+4. **Fault Tolerance (Tolerância a falhas)**
+
+   * Sugere práticas para maior disponibilidade e redundância.
+
+5. **Service Limits (Limites de serviço)**
+
+   * Mostra quando você está chegando perto de limites da AWS (ex: número de VPCs, instâncias EC2).
+
+---
+
+# Como funciona?
+
+* Ele **varre sua conta AWS** periodicamente.
+* Gera **checks e relatórios** com o status dos recursos.
+* Dependendo do seu plano AWS (Basic, Business, Enterprise), você tem acesso a mais ou menos verificações.
+
+---
+
+#  Exemplos de uso
+
+* Receber alerta de que um **bucket S3 está público** sem necessidade.
+* Saber que uma **instância EC2 está ociosa** e pode ser desligada para economizar.
+* Ser avisado de que o **limite de IPs elásticos** está quase estourando.
+* Validar se está seguindo as **melhores práticas de segurança e custo**.
+
+---
+
+Em resumo:
+O **AWS Trusted Advisor** é como um **check-up de saúde da sua conta AWS**: ele olha custos, segurança, performance, tolerância a falhas e limites de serviço, e dá recomendações práticas para melhorar.
+
+
+# O que é o AWS RAM?
+
+O **AWS Resource Access Manager (RAM)** é um serviço que permite **compartilhar recursos da AWS** de forma **segura** entre **contas diferentes** ou dentro da mesma **Organização AWS (AWS Organizations)**.
+
+Assim, em vez de duplicar recursos em cada conta, você pode **criar uma vez e compartilhar**.
+
+---
+
+# Principais características
+
+* **Compartilhamento seguro**
+
+  * Usa permissões baseadas em IAM e AWS Organizations.
+  * Você decide **quem pode usar** e **o que pode usar**.
+
+* **Suporte a múltiplos recursos** (exemplos):
+
+  * **VPC Subnets** → várias contas podem lançar instâncias na mesma rede.
+  * **Transit Gateway** → conectar múltiplas VPCs de contas diferentes.
+  * **License Manager** → compartilhar licenças de software.
+  * **Route 53 Resolver rules** → reutilizar regras DNS entre contas.
+  * **Outposts** → compartilhar infraestrutura on-premises.
+
+* **Gerenciamento centralizado**
+
+  * Funciona muito bem junto com **AWS Organizations**.
+
+---
+
+# Casos de uso
+
+* Uma empresa com **múltiplas contas AWS** que quer usar a mesma **rede (subnet/VPC)** em todas.
+* Compartilhar um **Transit Gateway** entre contas para interligar VPCs.
+* Uma conta centralizada que administra **licenças de software** e compartilha com outras.
+* Ambientes multi-time ou multi-projeto onde **recursos de rede e DNS** precisam ser comuns.
+
+---
+
+# RAM vs Duplicação de recursos
+
+| **Sem RAM (duplicação)**               | **Com RAM**                               |
+| -------------------------------------- | ----------------------------------------- |
+| Cada conta cria seus próprios recursos | Recursos criados uma vez e compartilhados |
+| Maior custo e complexidade             | Economia e simplicidade                   |
+| Difícil manter consistência            | Gerenciamento centralizado                |
+| Redes isoladas, difícil de integrar    | Conexão e colaboração facilitadas         |
+
+---
+
+Em resumo:
+O **AWS Resource Access Manager** é como **emprestar recursos na nuvem**: você cria uma vez (ex: uma estrada, uma licença, uma rede) e deixa que outras contas da sua organização usem, sem precisar duplicar tudo.
+
+
+# O que é o AWS Service Catalog?
+
+O **AWS Service Catalog** é um serviço que permite que **equipes de TI ou administradores** criem e gerenciem **catálogos de serviços aprovados** (como instâncias EC2, bancos de dados, aplicações inteiras, stacks do CloudFormation).
+
+ É como uma **loja interna da empresa na AWS**, onde os usuários escolhem recursos já padronizados e aprovados, sem precisar criar tudo do zero.
+
+---
+
+# Principais características
+
+* **Catálogo de produtos**
+
+  * Administradores publicam **produtos** (stacks CloudFormation, instâncias, apps).
+  * Usuários finais só precisam escolher e lançar esses produtos.
+
+* **Padronização**
+
+  * Garante que os recursos sejam criados de acordo com **boas práticas da empresa**.
+  * Evita configurações erradas ou fora de compliance.
+
+* **Governança**
+
+  * Permissões via IAM: quem pode ver, criar ou atualizar cada produto.
+  * Controle de versões para atualizar produtos com segurança.
+
+* **Integração com CloudFormation**
+
+  * Os produtos normalmente são baseados em **templates do CloudFormation**, garantindo automação e consistência.
+
+---
+
+# Casos de uso
+
+* **TI centralizada**: criar catálogos de ambientes aprovados (ex: “instância Linux com antivírus e monitoramento”).
+* **Equipes de desenvolvimento**: escolher stacks pré-configuradas (ex: “App Web em ECS com banco RDS”).
+* **Governança corporativa**: aplicar padrões de segurança e custo em todas as contas AWS.
+* **Educação/treinamento**: oferecer ambientes prontos para times testarem sem risco de erro.
+
+---
+
+# Service Catalog vs Marketplace
+
+| **Service Catalog**                                 | **AWS Marketplace**                         |
+| --------------------------------------------------- | ------------------------------------------- |
+| Produtos internos da empresa                        | Produtos de terceiros (softwares, soluções) |
+| Controlado e gerenciado pelo time de TI             | Publicado por fornecedores externos         |
+| Voltado para **padronização e compliance internos** | Voltado para **comprar soluções prontas**   |
+
+---
+ Em resumo:
+O **AWS Service Catalog** ajuda empresas a **padronizar, controlar e escalar** o uso de recursos na AWS, garantindo que equipes só utilizem o que foi **aprovado, seguro e otimizado**.
+
+
+# O que é o AWS Control Tower?
+
+O **AWS Control Tower** é um serviço que ajuda empresas a **configurar e gerenciar ambientes multi-conta** na AWS de forma rápida e com boas práticas de governança já embutidas.
+
+ Ele é como um **guarda-chuva organizador** para quem precisa de **múltiplas contas AWS**, garantindo **segurança, conformidade e padronização**.
+
+---
+
+# Principais características
+
+* **Landing Zone automatizada**
+
+  * Cria uma estrutura inicial segura e bem arquitetada, com múltiplas contas já preparadas.
+
+* **Guardrails (trilhos de proteção)**
+
+  * Políticas pré-configuradas que ajudam a manter boas práticas (ex: impedir S3 público, exigir logging).
+  * Podem ser **preventivos** (impedem ações não conformes) ou **detectivos** (apenas monitoram e alertam).
+
+* **Account Factory**
+
+  * Criação automatizada de novas contas AWS seguindo o padrão definido.
+
+* **Integração com AWS Organizations**
+
+  * Trabalha junto com o serviço Organizations para gerenciar **unidades organizacionais (OUs)** e permissões.
+
+* **Visibilidade centralizada**
+
+  * Painel único para ver status de conformidade e governança em todas as contas.
+
+---
+
+# Casos de uso
+
+* Empresas que precisam gerenciar **muitas contas AWS** (ex: diferentes times/projetos/unidades de negócio).
+* Aplicar **padrões de segurança e compliance** (como ISO, PCI, HIPAA).
+* Criar **contas rapidamente** já configuradas com redes, logging, monitoramento e permissões corretas.
+* Centralizar governança, sem perder flexibilidade para times criarem e gerenciarem seus próprios workloads.
+
+---
+
+# Control Tower vs Organizations
+
+| **AWS Organizations**                                       | **AWS Control Tower**                                        |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Focado em estrutura e gerenciamento de contas               | Focado em **governança pronta** (guardrails, landing zone)   |
+| Requer configuração manual para aplicar políticas e padrões | Automatiza boas práticas e cria contas com padrão            |
+| Bom para times avançados que querem flexibilidade total     | Bom para empresas que querem **rápida adoção com segurança** |
+
+---
+ 
+ Em resumo:
+O **AWS Control Tower** é como um **sistema de gestão escolar**: ele organiza as “salas” (contas AWS), aplica as regras (guardrails) e garante que todos os alunos (times) sigam as normas, sem precisar de muito esforço manual.
+
+
