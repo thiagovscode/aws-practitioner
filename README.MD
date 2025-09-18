@@ -472,8 +472,6 @@ O ElastiCache pode ser escalado para centenas de milhões de operações por seg
 - Muito utilizado por redes sociais que exigem grandes quantidades de links entre elas
 
 
-Aqui está a transcrição da imagem em **Markdown**, junto com as **categorias de armazenamento do Amazon S3**:
-
 ---
 
 # S3 – Simple Storage Service (Bucket)
