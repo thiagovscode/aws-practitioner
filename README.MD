@@ -1649,3 +1649,182 @@ Ele funciona como um **repositório privado (ou público)** onde você pode **ar
 O **Amazon ECR** é o **repositório de containers da AWS**, pensado para integrar com seus clusters e pipelines, com **segurança e performance gerenciadas pela Amazon**.
 
 ---
+
+# O que é o AWS Fargate?
+
+O **AWS Fargate** é um serviço de **execução de containers serverless**.
+Isso significa que você pode rodar **containers (Docker)** sem precisar **provisionar ou gerenciar servidores EC2**.
+
+ Você só define **quanto CPU e memória** seu container precisa, e o Fargate cuida de todo o resto (infraestrutura, escalabilidade, segurança).
+
+---
+
+# Principais características
+
+* **Serverless para containers**
+
+  * Não há necessidade de criar ou gerenciar clusters de EC2.
+
+* **Integração com ECS e EKS**
+
+  * Você define as tasks (ECS) ou pods (EKS), e o Fargate executa.
+
+* **Escalabilidade automática**
+
+  * Sobe ou desce containers conforme a demanda.
+
+* **Segurança isolada**
+
+  * Cada tarefa roda em seu próprio ambiente isolado, sem compartilhar kernel diretamente como em EC2.
+
+* **Custo baseado no uso**
+
+  * Você paga apenas pelo CPU e memória alocados durante a execução.
+
+---
+
+# Quando usar
+
+* Quando você quer rodar containers mas **não quer gerenciar servidores EC2**.
+* Para workloads **curtos, variáveis ou imprevisíveis**, onde autoescalabilidade importa.
+* Em arquiteturas de **microserviços**, facilitando deploy independente de cada componente.
+* Para pipelines de **CI/CD** que precisam rodar containers sob demanda.
+
+---
+
+# Exemplos de uso
+
+* Uma **API em containers** escalando automaticamente sob alta demanda.
+* Processamento de **jobs batch** (ex: análise de logs, machine learning).
+* **Aplicações event-driven**: S3 → evento dispara Lambda → Lambda dispara task no Fargate.
+
+---
+
+# Fargate vs EC2 (em ECS/EKS)
+
+| **ECS/EKS com EC2**                        | **ECS/EKS com Fargate**                       |
+| ------------------------------------------ | --------------------------------------------- |
+| Você gerencia os servidores (EC2)          | AWS gerencia tudo (serverless)                |
+| Maior controle e flexibilidade             | Mais simplicidade, menos overhead             |
+| Pode ser mais barato em workloads estáveis | Melhor para workloads variáveis/imprevisíveis |
+| Precisa cuidar de patch, capacity, scaling | Só define CPU e RAM, o resto é automático     |
+
+---
+
+ Em resumo:
+O **AWS Fargate** é como pedir um **Uber para containers**: você só diz o destino (CPU/memória que precisa), e a AWS leva seu container até lá, sem precisar dirigir (gerenciar servidores).
+
+---
+
+# O que é o AWS Lambda?
+
+O **AWS Lambda** é o serviço **serverless de funções** da AWS.
+Ele permite rodar **código sob demanda**, sem precisar gerenciar servidores.
+
+ Você só escreve a função, define quando ela deve ser executada e a AWS cuida de tudo: **infraestrutura, escalabilidade e alta disponibilidade**.
+
+---
+
+# Características principais
+
+* **Event-driven (baseado em eventos)**
+
+  * A função Lambda é disparada por eventos (ex: upload em S3, mensagem no SQS, chamada HTTP via API Gateway).
+
+* **Serverless**
+
+  * Não precisa provisionar nem gerenciar servidores.
+
+* **Suporte a várias linguagens**
+
+  * Python, Node.js, Java, Go, .NET, Ruby, entre outras.
+
+* **Escalabilidade automática**
+
+  * Escala de **0 a milhares de execuções em paralelo** conforme a demanda.
+
+* **Custo por uso**
+
+  * Você paga apenas pelo **tempo de execução** e pela quantidade de requisições.
+
+---
+
+# Exemplos de uso
+
+* **Automação com S3**:
+  Upload de uma imagem em um bucket → Lambda processa (redimensiona, gera thumbnail).
+
+* **Integração com API Gateway**:
+  Criar **APIs serverless** que disparam funções Lambda para responder requisições.
+
+* **Processamento em tempo real**:
+  Consumir dados de streams (ex: **Kinesis** ou **DynamoDB Streams**).
+
+* **Backends event-driven**:
+  Processar mensagens de filas **SQS** ou notificações do **SNS**.
+
+* **Tarefas agendadas**:
+  Rodar jobs periódicos (ex: limpar logs, gerar relatórios) usando **CloudWatch Events**.
+
+---
+
+# Lambda vs Fargate
+
+| **Lambda**                                       | **Fargate**                                      |
+| ------------------------------------------------ | ------------------------------------------------ |
+| Executa **funções** curtas e baseadas em eventos | Executa **containers** completos                 |
+| Duração máxima: **15 minutos**                   | Containers podem rodar por horas/dias            |
+| Sem necessidade de containerizar                 | Precisa de container (Docker)                    |
+| Ideal para automações, APIs, ETL, eventos        | Ideal para microserviços, jobs batch mais longos |
+
+---
+
+ Em resumo:
+O **AWS Lambda** é como um **botão mágico**: quando algo acontece (evento), ele roda seu código sem que você precise se preocupar com servidores.
+
+
+
+#  O que é o Lightsail?
+
+O **Amazon Lightsail** é um serviço da AWS feito para ser **simples e barato**, ideal para quem quer começar rápido na nuvem sem precisar lidar com toda a complexidade da AWS tradicional (EC2, VPC, Security Groups, etc).
+
+Ele oferece um conjunto **pré-configurado** de recursos de computação, rede e armazenamento em pacotes de preço fixo mensal.
+
+---
+
+# Principais características
+
+* **Instâncias simples**: máquinas virtuais fáceis de criar e gerenciar.
+* **Preços previsíveis**: planos mensais fixos (CPU, RAM, disco e tráfego inclusos).
+* **Aplicações prontas**: pode subir WordPress, Joomla, LAMP, Node.js, etc., com um clique.
+* **Banco de dados gerenciado**: PostgreSQL e MySQL simplificados.
+* **Rede e segurança inclusas**: IP estático, firewall, DNS básico.
+* **Integração com EC2**: se crescer, pode migrar workloads para o EC2.
+
+---
+
+# Quando usar?
+
+* **Sites e blogs**: WordPress, Joomla, Drupal.
+* **Aplicações web pequenas**: projetos pessoais ou MVPs.
+* **Ambientes de teste/lab**: rodar ambientes de desenvolvimento.
+* **Empresas pequenas**: que querem simplicidade em vez de complexidade da AWS completa.
+
+---
+
+# Lightsail vs EC2
+
+| **Lightsail**                              | **EC2**                                                   |
+| ------------------------------------------ | --------------------------------------------------------- |
+| Simples, pronto para uso                   | Flexível e altamente configurável                         |
+| Preço fixo mensal                          | Preço variável (por hora, recursos separados)             |
+| Menos opções avançadas                     | Integração total com todos os serviços AWS                |
+| Ideal para iniciantes e workloads pequenos | Ideal para workloads complexos, escaláveis e corporativos |
+
+---
+ Em resumo:
+O **Amazon Lightsail** é como a **porta de entrada da AWS**: fácil, barato e rápido para começar.
+Se o projeto crescer e precisar de mais recursos, você pode migrar para **EC2** e usar toda a potência da AWS.
+
+---
+
